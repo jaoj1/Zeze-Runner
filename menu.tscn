@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://r1dia47tgvl3"]
+
+[ext_resource type="Script" uid="uid://dhd3bq07ow3ed" path="res://Scripts/menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://bd1j3p1gp3jpy" path="res://Recursos/Assets Godot Runner/background.png" id="1_ouk20"]
+[ext_resource type="FontFile" uid="uid://bmj0ppftnavig" path="res://Recursos/Assets Godot Runner/PressStart2P-Regular.ttf" id="2_mae5d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4hy44"]
+texture = ExtResource("1_ouk20")
+
+[node name="Menu" type="Control" unique_id=442882163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="Fundo" type="Panel" parent="." unique_id=25150993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4hy44")
+
+[node name="Titulo" type="Label" parent="." unique_id=2133704829]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -408.0
+offset_top = 90.0
+offset_right = 408.0
+offset_bottom = 226.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 136
+text = " Zezé 
+Runner"
+
+[node name="Jogar" type="Button" parent="." unique_id=339122403]
+texture_filter = 3
+layout_mode = 0
+offset_left = 420.0
+offset_top = 400.0
+offset_right = 2028.0
+offset_bottom = 808.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.5372549, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 400
+text = "PLAY"
+
+[node name="Sair" type="Button" parent="." unique_id=1396866619]
+texture_filter = 3
+layout_mode = 0
+offset_left = 420.0
+offset_top = 500.0
+offset_right = 2028.0
+offset_bottom = 908.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.71807605, 0, 0.26343206, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.011764706, 0.3882353, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 400
+text = "QUIT
+"
+
+[connection signal="pressed" from="Jogar" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

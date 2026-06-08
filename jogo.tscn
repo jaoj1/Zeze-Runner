@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://cg5r0rgbf5wd2"]
+
+[ext_resource type="Script" uid="uid://s5wautc2spct" path="res://Scripts/jogo.gd" id="1_yq54j"]
+[ext_resource type="Texture2D" uid="uid://bd1j3p1gp3jpy" path="res://Recursos/Assets Godot Runner/background.png" id="2_1ap6j"]
+[ext_resource type="Texture2D" uid="uid://cgylx58dxdivo" path="res://Recursos/Assets Godot Runner/middleground2.png" id="3_8c340"]
+[ext_resource type="Texture2D" uid="uid://bngec6s263s30" path="res://Recursos/Assets Godot Runner/foreground.png" id="3_qn35j"]
+[ext_resource type="Texture2D" uid="uid://jnojo0m4xl7x" path="res://Recursos/Assets Godot Runner/middleground1.png" id="4_45nkh"]
+[ext_resource type="Texture2D" uid="uid://csnu5kvvcg4r1" path="res://Recursos/Assets Godot Runner/player.png" id="6_8c340"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c340"]
+size = Vector2(1152, 31)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45nkh"]
+radius = 17.0
+height = 58.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c340"]
+atlas = ExtResource("6_8c340")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45nkh"]
+atlas = ExtResource("6_8c340")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysdx3"]
+atlas = ExtResource("6_8c340")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8pok"]
+atlas = ExtResource("6_8c340")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtw28"]
+atlas = ExtResource("6_8c340")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orj5g"]
+atlas = ExtResource("6_8c340")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rhuj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c340")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45nkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysdx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8pok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtw28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orj5g")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
+[node name="Jogo" type="Node2D" unique_id=499870766]
+script = ExtResource("1_yq54j")
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=91867141]
+position = Vector2(2.7105054e-20, 0)
+scale = Vector2(3.5999997, 3.6000001)
+texture = ExtResource("2_1ap6j")
+centered = false
+
+[node name="Fundo2" type="Sprite2D" parent="." unique_id=900780222]
+position = Vector2(1152, 0)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_1ap6j")
+centered = false
+
+[node name="MeioAzul" type="Sprite2D" parent="." unique_id=1556093697]
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("3_8c340")
+centered = false
+
+[node name="MeioAzul2" type="Sprite2D" parent="." unique_id=1192962358]
+position = Vector2(1152, 0)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("3_8c340")
+centered = false
+
+[node name="MeioPreto" type="Sprite2D" parent="." unique_id=1504603274]
+position = Vector2(1152, -1)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("4_45nkh")
+centered = false
+
+[node name="MeioPreto2" type="Sprite2D" parent="." unique_id=1735256568]
+position = Vector2(0, -1)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("4_45nkh")
+centered = false
+
+[node name="Chao" type="Sprite2D" parent="." unique_id=696126939]
+position = Vector2(0, 600)
+scale = Vector2(3.6, 1)
+texture = ExtResource("3_qn35j")
+centered = false
+
+[node name="Chao2" type="Sprite2D" parent="." unique_id=86645998]
+position = Vector2(1134.0001, 600)
+scale = Vector2(3.7156246, 1)
+texture = ExtResource("3_qn35j")
+centered = false
+
+[node name="ChaoFisico" type="StaticBody2D" parent="." unique_id=1866340219]
+
+[node name="CorpoChao" type="CollisionShape2D" parent="ChaoFisico" unique_id=154113324]
+position = Vector2(576, 632.5)
+shape = SubResource("RectangleShape2D_8c340")
+
+[node name="Jogador" type="CharacterBody2D" parent="." unique_id=2017060601]
+
+[node name="Corpo" type="CollisionShape2D" parent="Jogador" unique_id=614005049]
+position = Vector2(68, 585)
+shape = SubResource("CapsuleShape2D_45nkh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jogador" unique_id=1148383362]
+position = Vector2(67, 592)
+scale = Vector2(2.3229167, 2.6249998)
+sprite_frames = SubResource("SpriteFrames_7rhuj")
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.87221044
