@@ -6,13 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://bngec6s263s30" path="res://Recursos/Assets Godot Runner/foreground.png" id="3_qn35j"]
 [ext_resource type="Texture2D" uid="uid://jnojo0m4xl7x" path="res://Recursos/Assets Godot Runner/middleground1.png" id="4_45nkh"]
 [ext_resource type="Texture2D" uid="uid://csnu5kvvcg4r1" path="res://Recursos/Assets Godot Runner/player.png" id="6_8c340"]
+[ext_resource type="Script" uid="uid://oy2meu4ngas7" path="res://Scripts/obstaculo.gd" id="7_t8pok"]
+[ext_resource type="Texture2D" uid="uid://dh7gxn0nttqw5" path="res://Recursos/Assets Godot Runner/thorn.png" id="8_mtw28"]
+[ext_resource type="Script" uid="uid://dnuj6lpwgkmvg" path="res://gerador_obstaculos.gd" id="8_t8pok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c340"]
 size = Vector2(1152, 31)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45nkh"]
-radius = 17.0
-height = 58.0
+radius = 39.0
+height = 110.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c340"]
 atlas = ExtResource("6_8c340")
@@ -63,6 +66,9 @@ animations = [{
 "name": &"running",
 "speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orj5g"]
+size = Vector2(119.25, 35.49997)
 
 [node name="Jogo" type="Node2D" unique_id=499870766]
 script = ExtResource("1_yq54j")
@@ -123,13 +129,31 @@ shape = SubResource("RectangleShape2D_8c340")
 [node name="Jogador" type="CharacterBody2D" parent="." unique_id=2017060601]
 
 [node name="Corpo" type="CollisionShape2D" parent="Jogador" unique_id=614005049]
-position = Vector2(68, 585)
+position = Vector2(146, 574)
 shape = SubResource("CapsuleShape2D_45nkh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jogador" unique_id=1148383362]
-position = Vector2(67, 592)
-scale = Vector2(2.3229167, 2.6249998)
+[node name="Imagem" type="AnimatedSprite2D" parent="Jogador" unique_id=1148383362]
+texture_filter = 1
+position = Vector2(144, 589)
+scale = Vector2(4.8411465, 4.3437505)
 sprite_frames = SubResource("SpriteFrames_7rhuj")
 animation = &"running"
 autoplay = "running"
 frame_progress = 0.87221044
+
+[node name="Obstaculo" type="Area2D" parent="." unique_id=151312618]
+position = Vector2(329, 583)
+script = ExtResource("7_t8pok")
+
+[node name="Imagem" type="Sprite2D" parent="Obstaculo" unique_id=1644041710]
+texture_filter = 1
+position = Vector2(646, -34.000027)
+scale = Vector2(8.21875, 8.593746)
+texture = ExtResource("8_mtw28")
+
+[node name="CorpoObs" type="CollisionShape2D" parent="Obstaculo" unique_id=68408582]
+position = Vector2(643, 18)
+shape = SubResource("RectangleShape2D_orj5g")
+
+[node name="GeradorObstaculos" type="Node2D" parent="." unique_id=1477613711]
+script = ExtResource("8_t8pok")
